@@ -1,4 +1,5 @@
 ## Nginx
+是一个开源且高性能、可靠的 HTTP 中间件、代理服务。
 高效（支持海量并发请求）、可靠的web服务和代理中间件
 - 基础篇
   - 快速安装
@@ -45,3 +46,34 @@
   - Nginx 与安全
   - 新版本特性
   - 中间件架构设计
+
+### 基于 Nginx 的中间件架构
+#### 学习环境：
+- 系统硬件：CPU >= 2Core, 内存 >= 256M。可以使用自己的服务器、[阿里云](aliyun.com)、vmware、docker
+- 操作系统：CentOS>=7.0, 位数 X64、Redhat
+环境调试确认：
+- 四项确认
+  - 确认系统网络
+  - 确认 yum 可用
+  - 确认关闭 iptables 规则
+    - iptables -L 查看是否有规则
+    - iptables -F 关闭规则
+    - iptables -t nat -L 保险起见再次查看
+    - iptables -t nat -F 有的话关闭
+  - 确认停用 selinux
+    - getenforce 查看是否开启着
+    - setenforce 0 关闭
+- 两项安装
+  - yum -y install gcc gcc-c++ autoconf pcre pcre-devel make automake
+  - yum -y install wget httpd-tools vim
+- 一次初始化
+  - cd /opt;mkdir app download logs work backup
+
+#### 常见的 HTTP 服务
+- HTTPD - Apache 基金会
+- IIS - 微软
+- GWS - Google
+
+#### 为什么选择 nginx
+- IO 多路复用 epoll  
+2-1~11 6：03
